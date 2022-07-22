@@ -1,8 +1,8 @@
-import 'dart:io';
+
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
+
+import 'package:super_bottom_navigation_bar/super_bottom_navigation_bar.dart';
 
 
 import 'package:pruebatecnica/pages/segundapages.dart';
@@ -125,8 +125,75 @@ class Homepage extends StatelessWidget {
             ),
           ),
           
-        ));
+        ),        bottomNavigationBar: SuperBottomNavigationBar(
+                currentIndex: 2,
+                items: makeNavItems(),
+                onSelected: (index){
+                  print('tab $index');
+                },
+              ),
+         
+        );
   }
+    List<SuperBottomNavigationBarItem> makeNavItems() {
+         return [
+               const SuperBottomNavigationBarItem(
+                 unSelectedIcon: Icons.home_outlined,
+                 selectedIcon: Icons.home_outlined,
+                 size: 30,
+                 backgroundShadowColor: Colors.red,
+                 borderBottomColor: Colors.red,
+                 borderBottomWidth: 3,
+                 splashColor: Colors.red,
+                 selectedIconColor: Colors.red,
+                 unSelectedIconColor: Colors.red
+               ),
+               const SuperBottomNavigationBarItem(
+                   unSelectedIcon: Icons.search_outlined,
+                   selectedIcon: Icons.search_outlined,
+                   size: 30,
+                   backgroundShadowColor: Colors.blue,
+                   borderBottomColor: Colors.blue,
+                   borderBottomWidth: 3,
+                   splashColor: Colors.blue,
+                   selectedIconColor: Colors.blue,
+                   unSelectedIconColor: Colors.blue
+               ),
+               const SuperBottomNavigationBarItem(
+                   unSelectedIcon: Icons.star_border_outlined,
+                   selectedIcon: Icons.star_border_outlined,
+                   size: 30,
+                   backgroundShadowColor: Colors.yellowAccent,
+                   borderBottomColor: Colors.yellowAccent,
+                   borderBottomWidth: 3,
+                   splashColor: Colors.yellowAccent,
+                   selectedIconColor: Colors.yellowAccent,
+                   unSelectedIconColor: Colors.yellowAccent
+               ),
+               const SuperBottomNavigationBarItem(
+                   unSelectedIcon: Icons.done_outline_rounded,
+                   selectedIcon: Icons.done_outline_rounded,
+                   size: 30,
+                   backgroundShadowColor: Colors.green,
+                   borderBottomColor: Colors.green,
+                   borderBottomWidth: 3,
+                   splashColor: Colors.green,
+                   selectedIconColor: Colors.green,
+                   unSelectedIconColor: Colors.green
+               ),
+               const SuperBottomNavigationBarItem(
+                   unSelectedIcon: Icons.person_outline,
+                   selectedIcon: Icons.person_outline,
+                   size: 30,
+                   backgroundShadowColor: Colors.purpleAccent,
+                   borderBottomColor: Colors.purpleAccent,
+                   borderBottomWidth: 3,
+                   splashColor: Colors.purpleAccent,
+                   selectedIconColor: Colors.purpleAccent,
+                   unSelectedIconColor: Colors.purpleAccent
+               ),
+             ];
+      }
 //
   void _showSeconPage(BuildContext context) {
     if (formKey.currentState!.validate()) {
