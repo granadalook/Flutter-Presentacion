@@ -9,31 +9,6 @@ import 'package:pruebatecnica/pages/segundapages.dart';
 
 class Homepage extends StatelessWidget {
 
-
-  
-  /* File? _image ;
-  Future getImage(ImageSource source) async {
-    try {
-      final image = await ImagePicker().pickImage(source: source);
-      if (image == null) return;
-
-     // final imagepermanente = await saveFilePermanente(image.path);
-      final imageTemporary = File(image.path);
-      setState(() {
-        this._image = imageTemporary;
-      });
-    } on PlatformException catch (e) {
-      print('falla al cargar: $e ');
-    }
-  } */
-
- /*  Future<File> saveFilePermanente(String imagePath) async {
-    final directory = await getApplicationDocumentsDirectory();
-    final name = basename(imagePath);
-    final image = File('${directory.path}/$name');
-    return File(imagePath).copy(image.path);
-  } */
-
   late String nameValue;
   late String lastNameValue;
   late String profesionRol;
@@ -43,41 +18,6 @@ class Homepage extends StatelessWidget {
   String? documentoSelect = "CC";
 
   final formKey = GlobalKey<FormState>();
-
-
-  File? image;
-
-  Future pickImage() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-      if(image == null) return;
-
-      final imageTemp = File(image.path);
-
-      setState(() {
-        this.image = imageTemp;
-      });
-    } on PlatformException catch(e) {
-      print('Failed to pick image: $e');
-    }
-  }
-
-  Future pickImageC() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.camera);
-
-      if(image == null) return;
-
-      final imageTemp = File(image.path);
-
-     setState(() {
-        this.image = imageTemp;
-      });
-    } on PlatformException catch(e) {
-      print('Failed to pick image: $e');
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -198,25 +138,5 @@ class Homepage extends StatelessWidget {
   void clear() {
     formKey.currentState?.reset();
   }
-
-  Widget CustomButton({
-    required String title,
-    required IconData icon,
-    required VoidCallback onClick,
-  }) {
-    return Container(
-      width: 200,
-      child: ElevatedButton(
-          onPressed: onClick,
-          child: Row(children: [
-            Icon(icon),
-            SizedBox(
-              width: 20,
-            ),
-            Text(title)
-          ])),
-    );
-  }
-
   void setState(Null Function() param0) {}
 }

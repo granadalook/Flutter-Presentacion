@@ -1,7 +1,6 @@
 
 import 'dart:io';
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -59,33 +58,30 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           children: [
+            
                  SizedBox(height: 20,),
-            image != null ? Image.file(image!,width: 150,height: 150,): Image.network('https://i.pinimg.com/474x/d7/52/45/d75245ef083eb6d380f4e37dd62994cb.jpg',width: 150,height: 150,),
-            MaterialButton(
-                color: Colors.blue,
-                child: const Text(
-                    "Pick Image from Gallery",
-                  style: TextStyle(
-                    color: Colors.white70, fontWeight: FontWeight.bold
-                  )
-                ),
+
+            image != null ? ClipOval(child: Image.file(image!,width: 150,height: 150,),): ClipOval(child: Image.network('https://i.pinimg.com/474x/d7/52/45/d75245ef083eb6d380f4e37dd62994cb.jpg',width: 150,height: 150,)),
+            Text('image'),
+            Row(mainAxisAlignment: MainAxisAlignment.center,children: [
+IconButton(
+                color: Color.fromARGB(255, 18, 18, 19),icon: Icon(Icons.image),
                 onPressed: () {
                   pickImage();
-                }
+                },
+                tooltip: 'Subir desde Galeria',
+                iconSize: 40.0,
             ),
-            MaterialButton(
-                color: Colors.blue,
-                child: const Text(
-                    "Pick Image from Camera",
-                    style: TextStyle(
-                        color: Colors.white70, fontWeight: FontWeight.bold
-                    )
-                ),
+              IconButton(
+                color: Color.fromARGB(255, 18, 18, 19),icon: Icon(Icons.add_a_photo),
                 onPressed: () {
                   pickImageC();
-                }
+                },
+                 tooltip: 'Subir desde Camara',
+                 iconSize: 40.0,
             ),
-       
+            ],),
+            
           ],
         ),
       )
