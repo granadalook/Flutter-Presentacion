@@ -30,7 +30,7 @@ class Homepage extends StatelessWidget {
               children: <Widget>[
            
                 TextFormField(
-                  decoration: const InputDecoration(labelText: "Nombres"),
+                  decoration: const InputDecoration(labelText: "Nombre",prefixIcon: Icon(Icons.text_fields)),
                   onSaved: (value) {
                     nameValue = value!;
                   },
@@ -42,7 +42,7 @@ class Homepage extends StatelessWidget {
                 ),
                 
                 TextFormField(
-                  decoration: InputDecoration(labelText: "Apellidos"),
+                  decoration: InputDecoration(labelText: "Apellido",prefixIcon: Icon(Icons.text_rotation_none)),
                   onSaved: (value) {
                     lastNameValue = value!;
                   },
@@ -53,7 +53,7 @@ class Homepage extends StatelessWidget {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: "Profesion o Rol"),
+                  decoration: InputDecoration(labelText: "Profesion o Rol",prefixIcon: Icon(Icons.work)),
                   onSaved: (value) {
                     profesionRol = value!;
                   },
@@ -70,7 +70,7 @@ class Homepage extends StatelessWidget {
                     color: Colors.deepPurple,
                   ),
                   dropdownColor: Colors.deepPurple.shade50,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       labelText: "Tipo de documento",
                       prefixIcon: Icon(Icons.document_scanner)),
                   items: listaDocumentos.map((valor) {
@@ -89,38 +89,45 @@ class Homepage extends StatelessWidget {
                   },
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: "Numero Documento"),
+                  decoration: InputDecoration(labelText: "Numero Documento",prefixIcon: Icon(Icons.numbers)),
+                  
                   onSaved: (value) {
                     documentoId = value!;
                   },
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return "Campo Documento Requerido ";
+                    if (value!.isEmpty ) {
+                      return "Campo Documento Requerido  ";
+                    }if( value.length > 8|| value.length < 2){
+                      return "Maximo 8 y minimo 2 caracteres entre numeros y letras";
                     }
                   },
                 ),
-               MaterialButton(
-                  color: Color.fromARGB(255, 175, 198, 238),
-                  child: const Text('Guardar'),
-                  onPressed: () {
-                    _showSeconPage(context);
-                  },
-                ),
-                MaterialButton(
-                  color: Color.fromARGB(255, 147, 6, 1),
-                  child: const Text('Borrar'),
-                  onPressed: () {
-                    clear();
-                  },
-                ),
-                
+               Row(mainAxisAlignment: MainAxisAlignment.center ,children: [
+                IconButton(
+                    color: Color.fromARGB(255, 216, 1, 1),
+                    icon: Icon(Icons.clear_all_rounded),
+                    onPressed: () {
+                      clear();
+                    },
+                    tooltip: 'Limpiar Campos',
+                    iconSize: 40.0,
+                  ),  IconButton(
+                    color: Color.fromARGB(255, 3, 99, 19),
+                    icon: Icon(Icons.save_alt_outlined),
+                    onPressed: () {
+                      _showSeconPage(context);;
+                    },
+                    tooltip: 'Guardar datos',
+                    iconSize: 40.0,
+                  )
+               ],)
               ],
             ),
           ),
           
         ));
   }
-
+//
   void _showSeconPage(BuildContext context) {
     if (formKey.currentState!.validate()) {
       formKey.currentState!.save();
